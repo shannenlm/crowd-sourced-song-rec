@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
     },
     "keywords": [],
     "author": "",
@@ -16,6 +17,5 @@
         "jQuery": "^1.7.4",
         "morgan": "^1.8.1",
         "underscore": "^1.9.1"
-    },
-    "start": "node index.js"
+    }
 }
