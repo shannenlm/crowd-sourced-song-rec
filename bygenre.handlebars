@@ -1,0 +1,166 @@
+<br>
+
+<div id="genreoptions">
+    <button id="pop" type="button">Pop</button>
+    <button id="rock" type="button">Rock</button>
+    <button id="indie" type="button">Indie</button>
+    <button id="rap" type="button">Rap</button>
+</div>
+
+{{#each data}}
+<article class="entry" hidden="hidden">
+    <h2 id="entrytitle">{{this.title}}</h2>
+    <div class="content">
+        <div id="artists">Artist(s): {{this.artists}} </div>
+        <div id="genres">Genre(s): {{this.genres}}</div>
+        <div id="language">Primary language: {{this.language}}</div>
+        <div id="rating">Average rating: {{ divide this.rate this.suggested }}</div>
+    </div>
+</article>
+{{/each}}
+
+<article id="noGenre" hidden="hidden">
+    <h1>There are no song recs with this genre yet. :(</h1>
+    <a href="/create">Create the first one!</a>
+</article>
+
+<script>
+    $(document).ready(function () {
+        $("#pop").click(function () {
+            $("button").each(function(index, element) { 
+                element.style.background = "white";
+                element.style.color = "black";
+            });
+
+            document.getElementById("pop").style.background = "#1DB954";
+            document.getElementById("pop").style.color = "white";
+
+            var count = 0;
+
+            $(".entry").each(function (index, element) {
+                var _genres = $(element).find("#genres").text().split(": ")[1].split(",");
+
+                for (var i in _genres) {
+                    if (_genres[i].toLowerCase() == "pop") {
+                        $(this).show();
+                        count++;
+                        break;
+                    }
+                    else {
+                        $(this).fadeOut();
+                    }
+                }
+            });
+
+            if (count == 0) {
+                $("#noMatches").show();
+            }
+            else {
+                $("#noMatches").hide();
+            }
+        });
+
+        $("#rock").click(function () {
+            $("button").each(function(index, element) { 
+                element.style.background = "white";
+                element.style.color = "black";
+            });
+            
+            document.getElementById("rock").style.background = "#1DB954";
+            document.getElementById("rock").style.color = "white";
+
+            var count = 0;
+
+            $(".entry").each(function (index, element) {
+                var _genres = $(element).find("#genres").text().split(": ")[1].split(",");
+
+                for (var i in _genres) {
+                    if (_genres[i].toLowerCase() == "rock") {
+                        $(this).show();
+                        count++;
+                        break;
+                    }
+                    else {
+                        $(this).fadeOut();
+                    }
+                }
+            });
+
+            if (count == 0) {
+                $("#noMatches").show();
+            }
+            else {
+                $("#noMatches").hide();
+            }
+        });
+
+        $("#indie").click(function () {
+            $("button").each(function(index, element) { 
+                element.style.background = "white";
+                element.style.color = "black";
+            });
+            
+            document.getElementById("indie").style.background = "#1DB954";
+            document.getElementById("indie").style.color = "white";
+
+            var count = 0;
+
+            $(".entry").each(function (index, element) {
+                var _genres = $(element).find("#genres").text().split(": ")[1].split(",");
+
+                for (var i in _genres) {
+                    if (_genres[i].toLowerCase() == "indie") {
+                        $(this).show();
+                        count++;
+                        break;
+                    }
+                    else {
+                        $(this).fadeOut();
+                    }
+                }
+            });
+
+            if (count == 0) {
+                $("#noMatches").show();
+            }
+            else {
+                $("#noMatches").hide();
+            }
+        });
+
+        $("#rap").click(function () {
+            $("button").each(function(index, element) { 
+                element.style.background = "white";
+                element.style.color = "black";
+            });
+            
+            document.getElementById("rap").style.background = "#1DB954";
+            document.getElementById("rap").style.color = "white";
+
+            var count = 0;
+
+            $(".entry").each(function (index, element) {
+                var _genres = $(element).find("#genres").text().split(": ")[1].split(",");
+
+                for (var i in _genres) {
+                    if (_genres[i].toLowerCase() == "rap") {
+                        $(this).show();
+                        count++;
+                        break;
+                    }
+                    else {
+                        $(this).fadeOut();
+                    }
+                }
+            });
+
+            if (count == 0) {
+                $("#noMatches").show();
+            }
+            else {
+                $("#noMatches").hide();
+            }
+        });
+    });
+
+</script>

@@ -1,0 +1,35 @@
+<h1 id="title">Create New Song Recommendation</h1>
+<article>
+    <form method="POST" action="/create">
+        <div class="input-field">
+            <label><b>Song Title: </b></label>
+            <input class="input-text" type="text" name="title" size="50" placeholder="Song title...">
+        </div>
+         <div class="input-field">
+            <label><b>Artist(s): </b></label>
+            <input class="input-text" type="text" name="artists" size="50" placeholder="Separate with commas...">
+        </div>
+        <div class="input-field">
+            <label><b>Genre(s): </b></label>
+            <input class="input-text" type="text" name="genres" size="50" placeholder="Separate with commas...">
+        </div>
+        <div class="input-field">
+            <label><b>Language: </b></label>
+            <input class="input-text" type="text" name="language" size="50" placeholder="Primary language..."></textarea>
+        </div>
+         <input class="input-text" type="text" name="suggested" size="50" hidden="hidden" value="0"></textarea>
+        <div class="input-field">
+            <label><b>Rate (out of 5):</b></label>
+            <input id="rate" type="range" name="rate" min="0" max="5" value="3">
+            <label id="ratedisplay">3</label>
+        </div>
+        
+        <div id="submit"><button type="submit" id="submit"><b>Create Song Rec</b></button></div>
+    </form>
+
+    <script>
+        document.getElementById("rate").oninput = function() {
+            document.getElementById("ratedisplay").innerHTML = this.value;
+        };
+    </script>
+</article>

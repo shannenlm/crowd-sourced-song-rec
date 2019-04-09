@@ -1,0 +1,58 @@
+// helpers for express handlebars
+
+module.exports = {
+  divide: function(a, b){
+      return (a / b);
+  },
+
+  sort_rating: function(data) { 
+    var dataCopy = data.slice();
+
+    dataCopy.sort(function(x,y) { 
+      var xRate = x["rate"]/x["suggested"];
+      var yRate = y["rate"]/y["suggested"];
+
+      if(xRate == yRate) { 
+        if(x["title"] == y["title"]) { 
+          return 0;
+        }
+        else { 
+          return ( x["title"] < y["title"] ) ? -1 : 1;
+        }
+      }
+      else { 
+        return ( xRate > yRate ) ? -1 : 1;
+      }
+    });
+
+    return dataCopy;
+  },
+
+  sort_alpha: function(data) { 
+    var dataCopy = data.slice();
+
+    dataCopy.sort(function(x,y) { 
+      if(x["title"] == y["title"]) { 
+        return 0;
+      }
+      else { 
+        return ( x["title"] < y["title"] ) ? -1 : 1;
+      }
+    });
+
+    return dataCopy;
+  },
+
+  get_english: function(data) { 
+    var ret = [];
+
+    for (var i in data) { 
+      if (data[i]["language"].toLowerCase() == "english") { 
+        ret.push(data[i]);
+      }
+    }
+
+    return ret;
+  },
+
+}
