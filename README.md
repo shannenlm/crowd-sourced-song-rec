@@ -80,7 +80,7 @@ Search Field: Song title
 
 Navigation Filters
 1. Best Songs -> `  /bestsongs  `
-2. By Genre -> `  /genre/:genre_name  `
+2. By Genre -> `  /bygenre  `
 3. English Songs -> `  /english  `
 4. Alphabetically -> `  /alphabetical  `
 5. Random Rec -> `  /randomrec  `
