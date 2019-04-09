@@ -16,5 +16,6 @@
         "jQuery": "^1.7.4",
         "morgan": "^1.8.1",
         "underscore": "^1.9.1"
-    }
+    },
+    "start": "node index.js"
 }
