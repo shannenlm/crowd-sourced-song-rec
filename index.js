@@ -29,7 +29,7 @@ var _DATA = dataUtil.loadData().songs;
  * endpoints for the API, and 5 others.
  */
 
- 
+
 app.get("/", function (req, res) {
   res.render('home', {
     data: _DATA
@@ -132,16 +132,66 @@ app.get("/bestsongs", function(req, res) {
   });
 });
 
+app.get("/api/bestsongs", function(req, res) { 
+  var dataCopy = _DATA.slice();
+
+    dataCopy.sort(function(x,y) { 
+      var xRate = x["rate"]/x["suggested"];
+      var yRate = y["rate"]/y["suggested"];
+
+      if(xRate == yRate) { 
+        if(x["title"] == y["title"]) { 
+          return 0;
+        }
+        else { 
+          return ( x["title"] < y["title"] ) ? -1 : 1;
+        }
+      }
+      else { 
+        return ( xRate > yRate ) ? -1 : 1;
+      }
+    });
+
+    res.send(dataCopy);
+})
+
 app.get("/english", function(req, res) { 
   res.render('english', {
     data: _DATA
   });
 });
 
+app.get("/api/getEnglish", function (req, res) { 
+  var ret = [];
+
+    for (var i in _DATA) { 
+      if (_DATA[i]["language"].toLowerCase() == "english") { 
+        ret.push(_DATA[i]);
+      }
+    }
+
+    res.send(ret);
+});
+
 app.get("/alphabetical", function(req, res) { 
   res.render('alphabetically', {
     data: _DATA
   });
+});
+
+app.get("/api/alphabetical", function(req, res) { 
+  var dataCopy = _DATA.slice();
+
+    dataCopy.sort(function(x,y) { 
+      if(x["title"] == y["title"]) { 
+        return 0;
+      }
+      else { 
+        return ( x["title"] < y["title"] ) ? -1 : 1;
+      }
+    });
+
+    res.send(dataCopy);
 });
 
 app.get("/randomrec", function(req, res) { 
